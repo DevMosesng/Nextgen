@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Page - Loose Fit Hoodie</title>
+  <link rel="shortcut icon" href="imgi_202_simple-n-logo-6910ba09-f6e7-47f9-b96b-17af37fe8654.png" type="image/x-icon">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <!-- AOS Animation CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet"/>
+  <style>
+    body {
+      background: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+        .navbar {
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .navbar-brand {
+      font-weight: 600;
+      font-size: 1.3rem;
+    }
+    .nav-btn {
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 5px 15px;
+      margin-left: 5px;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      background-color: #fff;
+    }
+    .nav-btn:hover {
+      background-color: #f5f5f5;
+    }
+    .search-box {
+      border-radius: 25px;
+      border: 1px solid #ddd;
+      padding: 5px 15px;
+      width: 220px;
+      transition: 0.3s;
+    }
+    .search-box:focus {
+      border-color: #333;
+      box-shadow: none;
+    }
+
+
+    .product-img img {
+      width: 100%;
+      border-radius: 10px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .thumb-img img {
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .thumb-img img:hover {
+      transform: scale(1.05);
+    }
+
+    .size-btn {
+      border: 1px solid #ccc;
+      border-radius: 50px;
+      padding: 8px 15px;
+      margin: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .size-btn.active,
+    .size-btn:hover {
+      background: black;
+      color: white;
+      border-color: black;
+    }
+
+    .btn-cart {
+      width: 100%;
+      border-radius: 50px;
+      padding: 12px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .btn-cart:hover {
+      background: #333 !important;
+      transform: translateY(-3px);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease;
+    }
+
+    .zoom-in {
+      animation: zoomIn 0.6s ease;
+    }
+
+        .rating-number {
+      font-size: 5rem;
+      font-weight: bold;
+      line-height: 1;
+    }
+    .star-bar {
+      height: 8px;
+      border-radius: 4px;
+    }
+    .review-card {
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .review-text {
+      font-size: 0.95rem;
+      color: #555;
+    }
+    .review-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .figure {
+      text-decoration: none;
+      color: black;
+      margin-left: 5px;
+    }
+
+        .product-card {
+      border: none;
+      background: #fff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .product-title {
+      font-weight: 500;
+      margin-top: 10px;
+    }
+    .old-price {
+      text-decoration: line-through;
+      color: gray;
+      font-size: 0.9rem;
+    }
+    .discount {
+      background: #f8d7da;
+      color: #dc3545;
+      font-size: 0.8rem;
+      border-radius: 10px;
+      padding: 2px 6px;
+      margin-left: 5px;
+    }
+    footer {
+      background: #fff;
+      border-top: 1px solid #eee;
+      margin-top: 40px;
+      padding-top: 30px;
+    }
+    .footer-logo {
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    .footer-links h6 {
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-links ul li {
+      margin-bottom: 6px;
+    }
+    .footer-links ul li a {
+      text-decoration: none;
+      color: #555;
+      transition: color 0.3s ease;
+    }
+    .footer-links ul li a:hover {
+      color: #000;
+    }
+    .social-icons a {
+      margin-right: 10px;
+      font-size: 1.2rem;
+      color: #444;
+      transition: 0.3s;
+    }
+    .social-icons a:hover {
+      color: #000;
+    }
+    .payment-icons img {
+      height: 25px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+      <!-- Navbar Start -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid px-3">
+      
+      <!-- Left: Hamburger -->
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Brand -->
+      <a class="navbar-brand d-flex align-items-center mx-3" href="#">
+        <span class="fw-bold fs-5 me-2"><img style="width: 50px;" src="imgi_202_simple-n-logo-6910ba09-f6e7-47f9-b96b-17af37fe8654.png" alt="Nextgen"></span> Nextgen
+      </a>
+
+      <!-- Menu -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          <!-- Categories Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              Categories
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Fashion</a></li>
+              <li><a class="dropdown-item" href="#">Electronics</a></li>
+              <li><a class="dropdown-item" href="#">Home</a></li>
+            </ul>
+          </li>
+
+          <!-- New Product Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              New Product
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Latest</a></li>
+              <li><a class="dropdown-item" href="#">Trending</a></li>
+            </ul>
+          </li>
+
+          <!-- Search Box -->
+          <li class="nav-item d-flex align-items-center mx-lg-3">
+            <input type="text" class="form-control search-box" placeholder="Search">
+            <i class="fas fa-search ms-2"></i>
+          </li>
+        </ul>
+
+        <!-- Right Menu -->
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item mx-2"><a class="nav-link" href="#">About</a></li>
+          <li class="nav-item mx-2"><a class="nav-link" href="#">FAQs</a></li>
+          <li class="nav-item mx-2"><a class="nav-link" href="#"><i class="fas fa-shopping-bag"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Navbar End -->
+
+  <!-- Categories Buttons -->
+  <div class="container-fluid mt-5 pt-5 text-center">
+    <button class="nav-btn">Men</button>
+    <button class="nav-btn">Women</button>
+    <button class="nav-btn">Children</button>
+    <button class="nav-btn">Brands</button>
+  </div>
+
+  <div class="container py-5">
+    <div class="row g-5 align-items-center">
+
+      <!-- Product Images -->
+      <div class="col-lg-6">
+        <div class="product-img mb-3">
+          <img style="width: 100%; height: auto;" id="mainImage" src="/imgi_276_8ea162d3795f5affa4c96b4e38ff247257ca2cff.webp" alt="Loose Fit Hoodie" class="img-fluid shadow zoom-in">
+        </div>
+        <div class="row g-3">
+          <div class="col-4 thumb-img">
+            <img style="width: 150px;" src="/imgi_21_fcccd435b8dee38e969f6da630e14ec7.webp" alt="Hoodie front" onclick="changeImage(this)">
+          </div>
+          <div class="col-4 thumb-img">
+            <img style="width: 150px;" src="/imgi_63_1ca22bf98fcbf721464c1a2b710b75cd.webp" alt="Hoodie back" onclick="changeImage(this)">
+          </div>
+          <div class="col-4 thumb-img">
+            <img style="width: 150px;" src="/imgi_16_8937d881ad73aeeda3e239e73c2fb4e2.webp" alt="Hoodie side" onclick="changeImage(this)">
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Details -->
+      <div class="col-lg-6 fade-in">
+        <h6 style="margin-bottom: 50px;" class="text-muted">Men Fashion</h6>
+        <h2 style="margin-bottom: 10px;" class="fw-bold">Loose Fit Hoodie</h2>
+        <h4 style="margin-bottom: 10px;" class="text-success">$24.99</h4>
+
+        <!-- Countdown -->
+        <p class="text-danger"><i class="fa-solid fa-clock"></i> Order in <span id="countdown">02:30:25</span> to get next day delivery</p>
+
+        <!-- Size Selection -->
+        <div class="mb-3">
+          <label style="margin-bottom: 20px;" class="fw-bold">Select Size:</label><br>
+          <button class="btn size-btn active">S</button>
+          <button class="btn size-btn">M</button>
+          <button class="btn size-btn">L</button>
+          <button class="btn size-btn">XL</button>
+          <button class="btn size-btn">XXL</button>
+        </div>
+
+        <!-- Add to Cart -->
+        <button style="margin-bottom: 25px;" class="btn btn-dark btn-cart mb-3">Add to Cart</button>
+        <button style="margin-bottom: 30px;" class="btn btn-outline-secondary rounded-circle"><i class="fa-regular fa-heart"></i></button>
+
+        <!-- Description -->
+        <div class="mt-4">
+          <h5 style="font-size: 25px; font-weight: 500;">Description & Fit</h5>
+          <p style="font-size: 23px;" class="text-muted">
+            Loose-fit sweatshirt hoodie in medium weight cotton-blend fabric with a generous, but not oversized silhouette. 
+            Jersey-lined, drawstring hood, dropped shoulders, long sleeves, and a kangaroo pocket. 
+            Wide ribbing at cuffs and hem. Soft, brushed inside.
+          </p>
+        </div>
+
+        <!-- Shipping -->
+        <div class="mt-4">
+          <h5 style="margin-bottom: 30px;">Shipping</h5>
+          <ul style="display: grid; grid-template-columns: 1fr 1fr;" class="list-unstyled">
+            <li style="margin-bottom: 70px; font-size: 20px;"><i class="fa-solid fa-tag text-success"></i> Discount: <b>50% Off</b></li>
+            <li style="font-size: 15px; font-weight: 500;"><i class="fa-solid fa-box"></i> Package: Regular Package</li>
+            <li style="font-size: 15px; font-weight: 500;"><i class="fa-solid fa-truck-fast"></i> Delivery Time: 3-4 Working Days</li>
+            <li style="font-size: 15px; font-weight: 500;"><i class="fa-solid fa-calendar-day"></i> Estimated Arrival: 10 - 12 October 2024</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container my-5">
+    <div class="row g-5 align-items-center">
+      
+      <!-- Left Section: Rating -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr;" class="col-lg-6 col-md-12 text-center text-lg-start" data-aos="fade-right">
+        <div class="left-side">
+            <h5 style="font-size: 13px; font-weight: 400;" class="mb-3">Rating & Reviews</h5>
+            <div class="d-flex align-items-center justify-content-lg-start justify-content-center mb-2">
+            <span class="rating-number">4,5</span>
+            <span class="fs-2">/5</span>
+            </div>
+                <p class="text-muted">(50 New Reviews)</p>
+        </div>
+        <div class="star-side">
+            <!-- Star Distribution -->
+            <div class="mb-2 d-flex align-items-center">
+            <span class="me-2 text-warning">★<a class="figure" href="">5</a></span>
+            <div class="flex-grow-1 bg-light star-bar">
+                <div class="bg-dark star-bar" style="width:70%"></div>
+            </div>
+            </div>
+            <div class="mb-2 d-flex align-items-center">
+            <span class="me-2 text-warning">★<a class="figure" href="">4</a></span>
+            <div class="flex-grow-1 bg-light star-bar">
+                <div class="bg-dark star-bar" style="width:50%"></div>
+            </div>
+            </div>
+            <div class="mb-2 d-flex align-items-center">
+            <span class="me-2 text-warning">★<a class="figure" href="">3</a></span>
+            <div class="flex-grow-1 bg-light star-bar">
+                <div class="bg-dark star-bar" style="width:20%"></div>
+            </div>
+            </div>
+            <div class="mb-2 d-flex align-items-center">
+            <span class="me-2 text-warning">★<a class="figure" href="">2</a></span>
+            <div class="flex-grow-1 bg-light star-bar">
+                <div class="bg-dark star-bar" style="width:8%"></div>
+            </div>
+            </div>
+            <div class="d-flex align-items-center">
+            <span class="me-2 text-warning">★<a class="figure" href="">1</a></span>
+            <div class="flex-grow-1 bg-light star-bar">
+                <div class="bg-dark star-bar" style="width:2%"></div>
+            </div>
+            </div>
+        </div>
+        
+      </div>
+
+      <!-- Right Section: Review -->
+      <div class="col-lg-6 col-md-12" data-aos="fade-left">
+        <div class="review-card bg-white">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr;" class="d-flex align-items-center mt-3">
+                  <img style="margin-top: 0;" src="/imgi_15_default.webp" alt="avatar" class="review-avatar me-2">
+                  <h6 style="font-size: 25px;" class="mb-1">Alex Mathio</h6>
+              </div>
+              <p style="margin-left: 75px; margin-top: 0;" class="text-warning mb-1">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </p>
+            </div>
+            <small class="text-muted">13 Oct 2024</small>
+          </div>
+          <p class="review-text mt-2">
+            "NextGen’s dedication to sustainability and ethical practices resonates strongly with today’s consumers, positioning the brand as a responsible choice in the fashion world."
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+    <!-- Products Section -->
+  <div class="container my-5">
+    <h3 class="text-center mb-4">You might also like</h3>
+    <div class="row g-4">
+
+      <!-- Product 1 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="card product-card">
+          <img src="/imgi_53_97889.webp" class="card-img-top" alt="Polo with Contrast Trims">
+          <div class="card-body text-center">
+            <h6 class="product-title">Polo with Contrast Trims</h6>
+            <p class="text-warning mb-1">
+              ★★★★☆ <small>4.0/5</small>
+            </p>
+            <p class="mb-0 fw-bold">$212 <span class="old-price">$242</span> <span class="discount">-20%</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="card product-card">
+          <img src="/imgi_87_61rsCyATNoL._UY1000_.webp" class="card-img-top" alt="Gradient Graphic T-shirt">
+          <div class="card-body text-center">
+            <h6 class="product-title">Gradient Graphic T-shirt</h6>
+            <p class="text-warning mb-1">
+              ★★★☆☆ <small>3.5/5</small>
+            </p>
+            <p class="mb-0 fw-bold">$145</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="card product-card">
+          <img src="/imgi_98_0G0A0728.webp" class="card-img-top" alt="Polo with Tipping Details">
+          <div class="card-body text-center">
+            <h6 class="product-title">Polo with Tipping Details</h6>
+            <p class="text-warning mb-1">
+              ★★★★☆ <small>4.5/5</small>
+            </p>
+            <p class="mb-0 fw-bold">$180</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="card product-card">
+          <img src="/imgi_98_ChathamHoodieFront.webp" class="card-img-top" alt="Striped Jacket">
+          <div class="card-body text-center">
+            <h6 class="product-title">Striped Jacket</h6>
+            <p class="text-warning mb-1">
+              ★★★★★ <small>5.0/5</small>
+            </p>
+            <p class="mb-0 fw-bold">$120 <span class="old-price">$150</span> <span class="discount">-30%</span></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="container">
+      <div class="row gy-4">
+        
+        <!-- Logo & About -->
+        <div class="col-md-3">
+        <h5 class="footer-logo">
+            <img style="width: 50px;" src="imgi_202_simple-n-logo-6910ba09-f6e7-47f9-b96b-17af37fe8654.png" alt="Nextgen">
+            Nextgen</h5>
+          <p class="text-muted">We have clothes that suits your style and which you’re proud to wear. From women to men.</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+          </div>
+        </div>
+
+        <!-- Company -->
+        <div class="col-md-2 footer-links">
+          <h6>COMPANY</h6>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Works</a></li>
+            <li><a href="#">Career</a></li>
+          </ul>
+        </div>
+
+        <!-- Help -->
+        <div class="col-md-2 footer-links">
+          <h6>HELP</h6>
+          <ul>
+            <li><a href="#">Customer Support</a></li>
+            <li><a href="#">Delivery Details</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- FAQ -->
+        <div class="col-md-2 footer-links">
+          <h6>FAQ</h6>
+          <ul>
+            <li><a href="#">Account</a></li>
+            <li><a href="#">Manage Deliveries</a></li>
+            <li><a href="#">Orders</a></li>
+            <li><a href="#">Payments</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources -->
+        <div class="col-md-3 footer-links">
+          <h6>RESOURCES</h6>
+          <ul>
+            <li><a href="#">Free eBooks</a></li>
+            <li><a href="#">Development Tutorial</a></li>
+            <li><a href="#">How to - Blog</a></li>
+            <li><a href="#">Youtube Playlist</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
+        <p class="text-muted mb-0">Nextgen © 2004, All Rights Reserved</p>
+        <div class="payment-icons">
+          <img src="https://img.icons8.com/color/48/visa.png" alt="Visa">
+          <img src="https://img.icons8.com/color/48/mastercard.png" alt="Mastercard">
+          <img src="https://img.icons8.com/color/48/paypal.png" alt="PayPal">
+          <img src="https://img.icons8.com/color/48/google-pay.png" alt="GPay">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+  <script>
+    // Change main image when thumbnail is clicked
+    function changeImage(img) {
+      document.getElementById("mainImage").src = img.src;
+    }
+
+    // Simple countdown timer (static)
+    function startCountdown(duration, display) {
+      let timer = duration, hours, minutes, seconds;
+      setInterval(function () {
+        hours = parseInt(timer / 3600, 10);
+        minutes = parseInt((timer % 3600) / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        hours = hours < 10 ? "0" + hours : hours;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = hours + ":" + minutes + ":" + seconds;
+
+        if (--timer < 0) {
+          timer = duration;
+        }
+      }, 1000);
+    }
+
+    window.onload = function () {
+      let twoHours = 2 * 60 * 60 + 30 * 60 + 25, // 2h 30m 25s
+          display = document.querySelector('#countdown');
+      startCountdown(twoHours, display);
+    };
+  </script>
+</body>
+</html>
